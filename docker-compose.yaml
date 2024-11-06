@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: express
+    ports:
+      - "5432:5432"  # Expose PostgreSQL for external connections if needed.
+
+  app:
+    image: my-node-app
+    ports:
+      - "13000:3000"
+    depends_on:
+      - db
